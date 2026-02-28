@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Afak Club - ENS | Open Your Mind. Shape Your Future.</title>
+    <meta name="description" content="El Afak Club at École Normale Supérieure (ENS) - A hub for creativity, leadership, collaboration and innovation. Join ambitious students to shape the future.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblue: "#0a192f",
+                        lightblue: "#112240",
+                        gold: "#ffd700",
+                        purple: "#7b4bff",
+                        accent: "#64ffda"
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fadeIn': 'fadeIn 1s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px rgba(255, 215, 0, 0.3)' },
+                            'to': { boxShadow: '0 0 25px rgba(255, 215, 0, 0.7)' }
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0a192f 0%, #1a365d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://picsum.photos/1600/900?random=1') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-deepblue rounded-full flex items-center justify-center">
+                        <span class="text-gold font-bold text-xl">A</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-deepblue font-poppins">El Afak Club<span class="text-sm font-normal text-gray-500"> - ENS</span></h1>
+                </div>
+                <ul id="nav-menu" class="hidden md:flex space-x-8"></ul>
+                <button id="mobile-menu-btn" class="md:hidden text-deepblue">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <ul id="mobile-nav"></ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative text-white py-16">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 font-poppins animate-fadeIn">Open Your Mind.<br>Shape Your Future.</h2>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">El Afak Club at École Normale Supérieure (ENS) – Where ambition meets innovation, creativity fuels leadership, and collaboration builds tomorrow.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button id="join-btn" class="bg-gold text-deepblue font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 animate-glow">Join Us</button>
+                <a href="#activities" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white/20 transition-all duration-300">Explore Activities</a>
+            </div>
+            <div class="mt-20 animate-float">
+                <i class="fas fa-chevron-down text-3xl opacity-70"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-deepblue mb-12 font-poppins">About Us</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <h3 class="text-2xl font-bold text-deepblue mb-4">Our Mission</h3>
+                        <p class="text-gray-600">To create a dynamic platform that empowers ENS students to unlock their potential, foster innovative thinking, and develop leadership skills through collaborative projects and cultural exchange.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <h3 class="text-2xl font-bold text-deepblue mb-4">Our Vision</h3>
+                        <p class="text-gray-600">To be the leading student club that shapes future leaders and innovators who will drive positive change in academia, industry, and society.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-deepblue mb-6">Core Values</h3>
+                    <div id="values-grid" class="grid grid-cols-2 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-deepblue mb-12 font-poppins">Our Activities</h2>
+            <div id="activities-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-deepblue mb-12 font-poppins">Our Team</h2>
+            <div id="team-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-deepblue mb-12 font-poppins">Gallery</h2>
+            <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        </div>
+    </section>
+
+    <!-- Join Us -->
+    <section id="join" class="py-20 bg-deepblue text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 font-poppins">Join El Afak Club</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <form id="join-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full p-3 rounded-lg bg-lightblue border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg bg-lightblue border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-2">Why do you want to join us?</label>
+                                <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg bg-lightblue border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gold text-deepblue font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition-all duration-300">Apply Now</button>
+                        </form>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                            <div class="flex space-x-6">
+                                <a href="#" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-lightblue p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-3">Why Join?</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-3"></i>Exclusive workshops & trainings</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-3"></i>Networking with ambitious peers</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-3"></i>Leadership opportunities</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-3"></i>Creative & cultural events</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-3"></i>Professional development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightblue text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
+                            <span class="text-deepblue font-bold text-2xl">A</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-poppins">El Afak Club</h3>
+                            <p class="text-gray-300">École Normale Supérieure (ENS)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">© 2023 El Afak Club – ENS. All rights reserved.</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul id="footer-links" class="flex flex-wrap justify-center md:justify-end gap-6"></ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>Designed with ❤️ for ambitious minds at ENS. Open Your Mind. Shape Your Future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Layer
+        const navigationData = [
+            { "id": "home", "label": "Home", "icon": "fas fa-home" },
+            { "id": "about", "label": "About Us", "icon": "fas fa-info-circle" },
+            { "id": "activities", "label": "Activities", "icon": "fas fa-calendar-alt" },
+            { "id": "team", "label": "Our Team", "icon": "fas fa-users" },
+            { "id": "gallery", "label": "Gallery", "icon": "fas fa-images" },
+            { "id": "join", "label": "Join Us", "icon": "fas fa-user-plus" }
+        ];
+
+        const valuesData = [
+            { "title": "Creativity", "desc": "Encouraging original ideas and artistic expression", "icon": "fas fa-lightbulb", "color": "text-purple" },
+            { "title": "Leadership", "desc": "Developing vision, responsibility and influence", "icon": "fas fa-crown", "color": "text-gold" },
+            { "title": "Collaboration", "desc": "Working together to achieve greater goals", "icon": "fas fa-hands-helping", "color": "text-blue-500" },
+            { "title": "Innovation", "desc": "Embracing change and technological advancement", "icon": "fas fa-rocket", "color": "text-accent" }
+        ];
+
+        const activitiesData = [
+            { "title": "Workshops", "desc": "Hand‑on skills training in tech, design & soft skills", "icon": "fas fa-laptop-code", "img": "https://picsum.photos/400/300?random=10" },
+            { "title": "Conferences", "desc": "Inspiring talks by industry leaders & academics", "icon": "fas fa-microphone-alt", "img": "https://picsum.photos/400/300?random=11" },
+            { "title": "Trainings", "desc": "Professional development & leadership programs", "icon": "fas fa-chalkboard-teacher", "img": "https://picsum.photos/400/300?random=12" },
+            { "title": "Cultural Events", "desc": "Art exhibitions, music performances, film screenings", "icon": "fas fa-palette", "img": "https://picsum.photos/400/300?random=13" }
+        ];
+
+        const teamData = [
+            { "name": "Aymen Abboudi", "role": "President of El Afak Club", "img": "https://picsum.photos/200?random=20" },
+            { "name": "Islam Fathoun", "role": "Vice President", "img": "https://picsum.photos/200?random=21" },
+            { "name": "Hiyam Hammadi", "role": "Vice President", "img": "https://picsum.photos/200?random=22" },
+            { "name": "Asma Arif", "role": "Member", "img": "https://picsum.photos/200?random=23" },
+            { "name": "Marwa Siouani", "role": "Member", "img": "https://picsum.photos/200?random=24" },
+            { "name": "Ritaj Boulbir", "role": "Member", "img": "https://picsum.photos/200?random=25" },
+            { "name": "Malak Ounissi", "role": "Member", "img": "https://picsum.photos/200?random=26" },
+            { "name": "Rayan Maansari", "role": "Member", "img": "https://picsum.photos/200?random=27" },
+            { "name": "Aymen Ouchen", "role": "Member", "img": "https://picsum.photos/200?random=28" },
+            { "name": "Adi Baha Eddine Balouli", "role": "Member", "img": "https://picsum.photos/200?random=29" },
+            { "name": "Idriss Kaddache", "role": "Member", "img": "https://picsum.photos/200?random=30" },
+            { "name": "Nafi Majd Eddine El Aayech", "role": "Member", "img": "https://picsum.photos/200?random=31" },
+            { "name": "Amani Kajouf", "role": "Member", "img": "https://picsum.photos/200?random=32" },
+            { "name": "Safaa Talbi", "role": "Member", "img": "https://picsum.photos/200?random=33" },
+            { "name": "Ines Fendali", "role": "Member", "img": "https://picsum.photos/200?random=34" },
+            { "name": "Ahlam Ammouch", "role": "Member", "img": "https://picsum.photos/200?random=35" },
+            { "name": "Amani Jghal", "role": "Member", "img": "https://picsum.photos/200?random=36" }
+        ];
+
+        const galleryData = [
+            { "img": "https://picsum.photos/300/200?random=30", "alt": "Workshop session at ENS" },
+            { "img": "https://picsum.photos/300/200?random=31", "alt": "Team building activity" },
+            { "img": "https://picsum.photos/300/200?random=32", "alt": "Conference keynote speaker" },
+            { "img": "https://picsum.photos/300/200?random=33", "alt": "Cultural event exhibition" },
+            { "img": "https://picsum.photos/300/200?random=34", "alt": "Leadership training workshop" },
+            { "img": "https://picsum.photos/300/200?random=35", "alt": "Creative project showcase" },
+            { "img": "https://picsum.photos/300/200?random=36", "alt": "Networking session" },
+            { "img": "https://picsum.photos/300/200?random=37", "alt": "Award ceremony" }
+        ];
+
+        const footerLinksData = [
+            { "label": "Privacy Policy", "href": "#privacy" },
+            { "label": "Terms of Use", "href": "#terms" },
+            { "label": "Contact", "href": "#join" },
+            { "label": "FAQ", "href": "#faq" },
+            { "label": "Blog", "href": "#blog" }
+        ];
+
+        // Reusable Render Functions
+        function renderNavItems(items) {
+            return items.map(item => "<li><a href=\"#" + item.id + "\" class=\"flex items-center space-x-2 text-deepblue hover:text-purple font-medium transition-colors\"><i class=\"" + item.icon + "\"></i><span>" + item.label + "</span></a></li>").join("");
+        }
+
+        function renderMobileNavItems(items) {
+            return items.map(item => "<li class=\"py-3 border-b border-gray-200\"><a href=\"#" + item.id + "\" class=\"flex items-center space-x-3 text-deepblue font-medium\"><i class=\"" + item.icon + " w-6\"></i><span>" + item.label + "</span></a></li>").join("");
+        }
+
+        function renderValues(items) {
+            return items.map(item => "<div class=\"bg-white p-6 rounded-xl shadow-md card-hover\"><div class=\"flex items-center mb-3\"><i class=\"" + item.icon + " " + item.color + " text-2xl mr-3\"></i><h4 class=\"text-xl font-bold text-deepblue\">" + item.title + "</h4></div><p class=\"text-gray-600\">" + item.desc + "</p></div>").join("");
+        }
+
+        function renderActivities(items) {
+            return items.map(item => "<div class=\"bg-white rounded-2xl shadow-lg overflow-hidden card-hover\"><div class=\"h-48 overflow-hidden\"><img src=\"" + item.img + "\" alt=\"" + item.title + "\" class=\"w-full h-full object-cover transition-transform duration-500 hover:scale-110\" loading=\"lazy\"></div><div class=\"p-6\"><div class=\"flex items-center mb-3\"><i class=\"" + item.icon + " text-purple text-xl mr-3\"></i><h3 class=\"text-xl font-bold text-deepblue\">" + item.title + "</h3></div><p class=\"text-gray-600\">" + item.desc + "</p></div></div>").join("");
+        }
+
+        function renderTeam(items) {
+            return items.map(item => "<div class=\"text-center bg-white p-6 rounded-2xl shadow-md card-hover\"><div class=\"w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gold\"><img src=\"" + item.img + "\" alt=\"" + item.name + "\" class=\"w-full h-full object-cover\" loading=\"lazy\"></div><h4 class=\"text-xl font-bold text-deepblue\">" + item.name + "</h4><p class=\"text-purple font-medium\">" + item.role + "</p></div>").join("");
+        }
+
+        function renderGallery(items) {
+            return items.map(item => "<div class=\"gallery-item rounded-lg overflow-hidden shadow-lg\"><img src=\"" + item.img + "\" alt=\"" + item.alt + "\" class=\"w-full h-48 object-cover\" loading=\"lazy\"></div>").join("");
+        }
+
+        function renderFooterLinks(items) {
+            return items.map(item => "<li><a href=\"" + item.href + "\" class=\"text-gray-300 hover:text-gold transition-colors\">" + item.label + "</a></li>").join("");
+        }
+
+        // DOM Injection
+        document.getElementById("nav-menu").innerHTML = renderNavItems(navigationData);
+        document.getElementById("mobile-nav").innerHTML = renderMobileNavItems(navigationData);
+        document.getElementById("values-grid").innerHTML = renderValues(valuesData);
+        document.getElementById("activities-container").innerHTML = renderActivities(activitiesData);
+        document.getElementById("team-container").innerHTML = renderTeam(teamData);
+        document.getElementById("gallery-container").innerHTML = renderGallery(galleryData);
+        document.getElementById("footer-links").innerHTML = renderFooterLinks(footerLinksData);
+
+        // Event Handlers
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        
+        mobileMenuBtn.addEventListener("click", function() {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Smooth scrolling for navigation links
+        document.addEventListener("click", function(event) {
+            const link = event.target.closest("a[href^='#']");
+            if (!link) return;
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                event.preventDefault();
+                mobileMenu.classList.add("hidden");
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: "smooth"
+                });
+            }
+        });
+
+        // Join button scroll to form
+        document.getElementById("join-btn").addEventListener("click", function() {
+            document.getElementById("join").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        // Form submission
+        document.getElementById("join-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            
+            if (name && email && message) {
+                alert("Thank you " + name + "! Your application has been submitted. We'll contact you at " + email + " soon.");
+                this.reset();
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
+        // Delegated hover effects for gallery items
+        document.getElementById("gallery-container").addEventListener("mouseover", function(event) {
+            const item = event.target.closest(".gallery-item");
+            if (item) {
+                item.style.zIndex = "20";
+            }
+        });
+
+        document.getElementById("gallery-container").addEventListener("mouseout", function(event) {
+            const item = event.target.closest(".gallery-item");
+            if (item) {
+                item.style.zIndex = "";
+            }
+        });
+    </script>
+</body>
+</html>
